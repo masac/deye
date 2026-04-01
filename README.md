@@ -1,3 +1,5 @@
+Tip integrare Home Assitant: HACS - Solarman Stick Logger v26.08.16
+
 1) Fisierul configuration.yaml se adauga in folderul homeassitant. In el sunt setarile pentru ca home assistant sa calculeze timpul estimativ de descarcare al baterie pana la 30% sau de incarcare pana la 100%.
 
 2) In Panou setari invertor Deye este codul ce trebuie inserat pentru a obtine imaginea de mai jos.
@@ -7,4 +9,4 @@
 
 
 3) Cea mai frecventa problema o reprezinta varfurile de tensiune care fac ca invertorul sa se opreasca cand se atinge tensiunea de 253 V.
-   Solutia gasita: In System Work Mode la Max Sell Power se seteaza initial 2000 W si se creste gradual valoarea cat permite reteaua. 
+   Solutia gasita: In System Work Mode la invertor,la Max Sell Power se seteaza initial 2000 W si se creste gradual valoarea cat permite reteaua. 
