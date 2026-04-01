@@ -9,4 +9,4 @@ Tip integrare Home Assitant: HACS - Solarman Stick Logger v26.08.16
 
 
 3) Cea mai frecventa problema o reprezinta varfurile de tensiune care fac ca invertorul sa se opreasca cand se atinge tensiunea de 253 V.
-   Solutia gasita: In System Work Mode la invertor,la Max Sell Power se seteaza initial 2000 W si se creste gradual valoarea cat permite reteaua. 
+   Solutia gasita: In System Work Mode la invertor, la Max Sell Power se seteaza initial 2000 W si se creste gradual valoarea cat permite reteaua. 
