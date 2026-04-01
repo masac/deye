@@ -1,0 +1,81 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+homeassistant:
+  name: Acasă
+  elevation: 90
+  unit_system: metric
+  time_zone: Europe/Bucharest
+
+template:
+  - sensor:
+      # 1. Calcul minute până la încărcare completă (100%)
+      - name: "Battery Full Charge Time"
+        unit_of_measurement: "min"
+        state: >
+          {% set capacity_kwh = states('sensor.inverter_battery_capacity') | float(0) %}
+          {% set state_of_charge_percent = states('sensor.inverter_battery') | float(0) %}
+          {% set battery_power_w = states('sensor.inverter_battery_power') | float(0) %}
+          {% if battery_power_w < -10 and state_of_charge_percent < 100 %}
+            {% set needed_kwh = capacity_kwh * (100 - state_of_charge_percent) / 100 %}
+            {% set charging_power_kw = (battery_power_w * -1) / 1000 %}
+            {{ ((needed_kwh / charging_power_kw) * 60) | round(0) }}
+          {% else %}
+            0
+          {% endif %}
+
+      # 2. ORA la care bateria va fi plină
+      - name: "Ora Finalizare Incarcare"
+        icon: mdi:battery-clock
+        state: >
+          {% set minutes_to_add = states('sensor.battery_full_charge_time') | int(0) %}
+          {% if minutes_to_add > 0 %}
+            {% set target_time = now() + timedelta(minutes=minutes_to_add) %}
+            {% if target_time.day != now().day %}
+              {{ target_time.strftime('%d.%m, %H:%M') }}
+            {% else %}
+              {{ target_time.strftime('%H:%M') }}
+            {% endif %}
+          {% else %}
+            "Inactiv"
+          {% endif %}
+
+      # 3. Calcul minute până la descărcare la limită 30%
+      - name: "Battery Discharge Time to 30 Percent"
+        unit_of_measurement: "min"
+        state: >
+          {% set capacity_kwh = states('sensor.inverter_battery_capacity') | float(0) %}
+          {% set load_power_w = states('sensor.inverter_battery_power') | float(0) %}
+          {% set state_of_charge_percent = states('sensor.inverter_battery') | float(0) %}
+          {# Verificăm să fim peste 30% și să avem consum (putere pozitivă) #}
+          {% if load_power_w > 10 and state_of_charge_percent > 30 %}
+            {% set energy_to_discharge_kwh = capacity_kwh * (state_of_charge_percent - 30) / 100 %}
+            {% set load_power_kw = load_power_w / 1000 %}
+            {{ ((energy_to_discharge_kwh / load_power_kw) * 60) | round(0) }}
+          {% else %}
+            0
+          {% endif %}
+
+      # 4. ORA la care bateria ajunge la 30%
+      - name: "Ora Limita Descarcare 30%"
+        icon: mdi:battery-arrow-down
+        state: >
+          {% set minutes_to_add = states('sensor.battery_discharge_time_to_30_percent') | int(0) %}
+          {% if minutes_to_add > 0 %}
+            {% set target_time = now() + timedelta(minutes=minutes_to_add) %}
+            {% if target_time.day != now().day %}
+              {{ target_time.strftime('%d.%m, %H:%M') }}
+            {% else %}
+              {{ target_time.strftime('%H:%M') }}
+            {% endif %}
+          {% else %}
+            "Inactiv"
+          {% endif %}
