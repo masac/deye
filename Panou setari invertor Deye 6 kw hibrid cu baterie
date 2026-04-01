@@ -1,0 +1,95 @@
+Tip integrare: HACS- Solarman Stick Logger v26.08.16
+Tip card: Mark Down
+
+Continut card:Se insereaza codul de mai jos:
+
+<table style="width: 100%; border-collapse: collapse; font-size: 9px; line-height: 0.9; table-layout: fixed; border: none;">
+  <tr style="font-weight: bold; background-color: rgba(255, 255, 255, 0.1);">
+    <td style="padding: 1px; text-align: center; width: 22%;">Panou</td>
+    <td style="padding: 1px; text-align: center;">Prod.zi</td>
+    <td style="padding: 1px; text-align: center;">Consum</td>
+    <td style="padding: 1px; text-align: center;">Import</td>
+    <td style="padding: 1px; text-align: center;">Export</td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_today_production') }}k</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_today_load_consumption') }}k</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_today_energy_import') }}k</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_today_energy_export') }}k</td>
+  </tr>
+  <tr style="color: #aaa;">
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.lumi_de_lumi_158d00019d3919_v1_temperature_p_2_1') }}°C</td>
+    <td style="padding: 1px; text-align: center;">PV1</td>
+    <td style="padding: 1px; text-align: center;">PV2</td>
+    <td style="padding: 1px; text-align: center;">T_dc</td>
+    <td style="padding: 1px; text-align: center;">T_ac</td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">Putere</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv1_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv2_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_dc_temperature') }}°</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_temperature') }}°</td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">Tens.</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv1_voltage') }}V</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv2_voltage') }}V</td>
+    <td></td><td></td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">Curent</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv1_current') }}A</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_pv2_current') }}A</td>
+    <td></td><td></td>
+  </tr>
+  
+  <tr style="font-weight: bold; background-color: rgba(255, 255, 255, 0.05);">
+    <td style="padding: 1px; text-align: center;">BAT.</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_battery_state') }}</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_battery_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_battery_voltage') }}V</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_battery_current') }}A</td>
+  </tr>
+  <tr style="color: #aaa;">
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_battery') }}%</td>
+    <td style="padding: 1px; text-align: center;">T.inc</td>
+    <td style="padding: 1px; text-align: center;">Inc.</td>
+    <td style="padding: 1px; text-align: center;">Desc.</td>
+    <td style="padding: 1px; text-align: center;">T.desc</td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_battery_temperature') }}°C</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.ora_finalizare_incarcare') }}</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_today_battery_charge') }}k</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_today_battery_discharge') }}k</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.ora_limita_descarcare_30') }}</td>
+  </tr>
+
+  <tr style="font-weight: bold; background-color: rgba(255, 255, 255, 0.05);">
+    <td style="padding: 1px; text-align: center;">CASA</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_load_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_load_frequency') }}Hz</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_load_l1_current') }}A</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_load_l1_voltage') }}V</td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">Iesire inv</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_output_l1_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_output_frequency') }}Hz</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_output_l1_current') }}A</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_output_l1_voltage') }}V</td>
+  </tr>
+  <tr style="font-weight: bold; background-color: rgba(255, 255, 255, 0.05);">
+    <td style="padding: 1px; text-align: center;">RETEA</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_grid_power') }}W</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_grid_frequency') }}Hz</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_grid_l1_current') }}A</td>
+    <td style="padding: 1px; text-align: center;">{{ states('sensor.inverter_grid_l1_voltage') }}V</td>
+  </tr>
+  <tr>
+    <td style="padding: 1px; text-align: center;">{{ states('binary_sensor.inverter_grid') }}</td>
+    <td>Export</td><td>{{ states('number.inverter_export_surplus_power') }} W</td><td></td><td></td>
+  </tr>
+</table>
