@@ -1,0 +1,1 @@
+Fisierul configuration.yaml se adauga in folderul homeassitant. In el sunt setarile pentru ca home assistant sa calculeze timpul estimativ de descarcare al baterie pana la 30% sau de incarcare pana la 100%.
